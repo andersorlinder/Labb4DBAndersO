@@ -57,7 +57,7 @@ namespace Labb4Anders
                         isUnique = true;
                         continue;
                     }
-                    Console.WriteLine("Email is already in use. Try another one! (Enter q to go back)\nEmail: ");
+                    Console.Write("Email is already in use. Try another one! (Enter q to go back)\nEmail: ");
 
                 } while (!isUnique);
 
@@ -102,7 +102,7 @@ namespace Labb4Anders
             Console.WriteLine("*** Admin Login ***\n");
             if (DateTime.Now < loginDelay)
             {
-                Console.WriteLine($"Admin Login is locked till {loginDelay.ToString("HH: mm:ss")}.\nPlease return later. Press any key to go back.");
+                Console.WriteLine($"Admin Login is locked till {loginDelay.ToString("HH:mm:ss")}.\nPlease return later. Press any key to go back.");
                 Console.ReadKey(true);
                 return false;
             }
@@ -121,7 +121,7 @@ namespace Labb4Anders
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine($"User could not be found. {passwordRetry} attemps left.\n");
+                    Console.WriteLine($"User could not be found. {passwordRetry} attemps left.");
                     continue;
                 }
 
@@ -131,14 +131,14 @@ namespace Labb4Anders
                 }
                 else
                 {
-                    Console.WriteLine($"User is not an admin. {passwordRetry} attemps left.\n");
+                    Console.WriteLine($"User is not an admin. {passwordRetry} attemps left.");
                 }
             } while (passwordRetry > 0 && !isAdmin);
 
             if (isAdmin == false)
             {
                 loginDelay = DateTime.Now.AddMinutes(5);
-                Console.WriteLine($"Wait till {loginDelay.ToString("HH:mm:ss")} to next try. Press any key to go back.");
+                Console.WriteLine($"Wait till {loginDelay.ToString("HH:mm:ss")} until next try. Press any key to go back.");
                 Console.ReadKey(true);
             }
 
@@ -216,7 +216,7 @@ namespace Labb4Anders
                 }
                 Console.WriteLine();
                 Console.Write("Admin with ID \"1\" can not be removed as admin.\n" +
-                    "Choose one \"ID\" to add or remove as admin, enter q to go back): ");
+                    "Choose one \"ID\" to add or remove as admin, enter q to go back: ");
 
                 inputString = Console.ReadLine().Trim();
                 inputInt = int.TryParse(inputString, out inputInt) ? inputInt : 0;
