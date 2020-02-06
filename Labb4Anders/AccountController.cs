@@ -49,7 +49,7 @@ namespace Labb4Anders
                     ApprovedPhoto = "http://facebookfplus.com/upload/images/600_97d118b7a6f8f87d18f7b1385ea7665e.png",
                     IsAdmin = true,
                     Password = "1234"
-                }); ;
+                });
                 accountContext.SaveChanges();
             }
         }
