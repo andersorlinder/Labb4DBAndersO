@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-
-namespace Labb4Anders
+﻿namespace Labb4Anders
 {
     public class Program
     {

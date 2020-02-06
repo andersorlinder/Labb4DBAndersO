@@ -68,7 +68,7 @@ namespace Labb4Anders
                 Console.Clear();
                 Console.WriteLine("*** Add Account ***\n");
 
-                if (SetEmail(out email))
+                if (CheckEmail(out email))
                 {
                     Console.Write("First Name: ");
                     firstName = Console.ReadLine().Trim();
@@ -89,7 +89,7 @@ namespace Labb4Anders
                     accountContext.SaveChanges();
                 }
                 Console.CursorVisible = false;
-                if (email == "q")
+                if (email == "q")  //exit in CheckEmail()
                 {
                     addAnotherAccount = false;
                 }
@@ -104,14 +104,16 @@ namespace Labb4Anders
             }
         }
 
-        private bool SetEmail(out string email)
+        private bool CheckEmail(out string email)
         {
+            string compareEmail;
+
             do
             {
                 Console.Write("Email (enter \"q\" to go back): ");
                 Console.CursorVisible = true;
                 email = Console.ReadLine().Trim();
-                var compareEmail = email;
+                compareEmail = email;
                 if (email == "q")
                 {
                     return false;
@@ -123,7 +125,6 @@ namespace Labb4Anders
                 else if (accountContext.Accounts.AsEnumerable().Any(u => u.Email == compareEmail))
                 {
                     Console.WriteLine(" - Email is already in use!");
-
                 }
                 else break;
             } while (email != "q");
@@ -294,7 +295,7 @@ namespace Labb4Anders
                 account = accountContext.Accounts.Single(u => u.Id == inputInt);
                 if (account.IsAdmin)
                 {
-                    Console.Write($"Confirm removal of no {account.Id} {account.FirstName} {account.LastName} as admin? (Y/N)");
+                    Console.WriteLine($"Confirm removal of no {account.Id} {account.FirstName} {account.LastName} as admin? (Y/N)");
 
                     if (Confirmation())
                     {
@@ -316,7 +317,7 @@ namespace Labb4Anders
                         Console.CursorVisible = false;
                         account.IsAdmin = true;
                         accountContext.SaveChanges();
-                        Console.WriteLine($"\n No {account.Id} {account.FirstName} {account.LastName} is now an admin.\n" +
+                        Console.WriteLine($"\nNo {account.Id} {account.FirstName} {account.LastName} is now an admin.\n" +
                             $"Press any key to continue!");
                     }
                 }
